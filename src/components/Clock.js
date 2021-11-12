@@ -54,6 +54,7 @@ const Clock = () => {
 
     const handleStart = () => {
         console.log('start clicked');
+        setIsFinished(false);
         setIsRunning(true);
     }
     const handlePause = () => {
@@ -70,7 +71,9 @@ const Clock = () => {
     return (
         <>
         <h1>Pomodoro Clock</h1>
-        {isFinished && <span className="finished-timer-text">The timer has finished!</span> }
+        {isFinished &&
+        <span className="finished-timer-text">The timer has finished!</span>
+        }
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
         <div className="button-wrapper">
             {!rest
@@ -79,13 +82,12 @@ const Clock = () => {
             :
             <button onClick={handleStart} type="button" className="start-button">Start Break</button>
             }
-          {/* <button onClick={handleStart} type="button" className="start-button">Start</button> */}
           <button onClick={handlePause} type="button" className="pause-button">Pause</button>
           <button onClick={handleReset} type="button" className="reset-button">Reset</button>
         </div>  
-          {/* <button type="button" className="settings-button">Settings</button> */}
           {isRunning ? <div>running</div> : <div>not running</div>}
           {isFinished ? <div>finished</div> : <div>not finished</div>}
+          {rest ? <div>break</div> : <div>productivity</div>}
         </>
     )
 }
