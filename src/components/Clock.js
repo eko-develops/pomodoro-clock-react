@@ -21,6 +21,7 @@ const Clock = () => {
     const timerSeconds = timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds;
 
     useEffect(() => {
+
         if(isRunning){
         
             const interval = setInterval( () => {
@@ -33,8 +34,12 @@ const Clock = () => {
                     } else {
                         setIsRunning(false);
                         setIsFinished(true);
-                        setTimer(initialBreakTimer);
                         setRest(!rest);
+                        if(rest){
+                            setTimer(initialProdTimer);
+                        } else {
+                            setTimer(initialBreakTimer);
+                        }
                     }
                 } else {
                     setTimer({minutes: timer.minutes, seconds: timer.seconds - 1});
@@ -43,9 +48,9 @@ const Clock = () => {
             }, 1000);
 
             return () => clearInterval(interval);
-            
+
         }
-    }, [isRunning, timer]);
+    }, [isRunning, timer, rest]);
 
     const handleStart = () => {
         console.log('start clicked');
