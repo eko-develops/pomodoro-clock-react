@@ -74,7 +74,6 @@ const Clock = () => {
         <div className="finished-timer-text-wrapper">
         {isFinished &&
         <span className="finished-timer-text">The timer has finished!</span>
-
         }
         </div>
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
