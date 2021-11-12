@@ -1,18 +1,9 @@
+import Header from "./components/Header";
+
 function App() {
   return (
     <div className="App">
-      <header>
-        <div className="brand">
-          ekodevelops
-        </div>
-        <div className="socials">
-          <div className="single-social">
-            <div className="social-icon">
-            </div>
-            <span>GitHub</span>
-          </div>
-        </div>
-      </header>
+      <Header />
       <div className="content">
         <h1>Pomodoro Clock</h1>
         <h2 className="time">25:00</h2>
