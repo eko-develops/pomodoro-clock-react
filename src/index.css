@@ -1,1 +1,30 @@
 /* global styles */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: none;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.App{
+    background-color: red;
+    min-height: 100vh;
+}
+
+.content{
+    background-color: blue;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.button-wrapper > button{
+    margin: 1rem;
+    padding: 0.3rem 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
