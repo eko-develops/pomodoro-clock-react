@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 const Clock = () => {
 
     const initialProdTimer = {
-        minutes: 0,
-        seconds: 5
+        minutes: 25,
+        seconds: 0
     }
 
     const initialBreakTimer = {
-        minutes: 0,
-        seconds: 3
+        minutes: 5,
+        seconds: 0
     }
 
     const [timer, setTimer] = useState(initialProdTimer);

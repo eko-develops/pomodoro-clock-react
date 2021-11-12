@@ -33,6 +33,7 @@ button{
     font-family: Poppins;
     color: white;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .App{
