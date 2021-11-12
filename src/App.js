@@ -8,7 +8,6 @@ function App() {
           <button type="button" className="start-button">Start</button>
           <button type="button" className="pause-button">Pause</button>
           <button type="button" className="reset-button">Reset</button>
-
         </div>
       </div>
     </div>
