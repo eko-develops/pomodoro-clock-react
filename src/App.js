@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <button type="button" className="reset-button">Reset</button>
         </div>
       </div>
+      <Footer />
     </div>
       );
 }
