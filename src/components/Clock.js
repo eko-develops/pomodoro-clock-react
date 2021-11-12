@@ -19,7 +19,6 @@ const Clock = () => {
                     setSeconds(59);
                     setMinutes(minutes - 1);
                 } else {
-                    //the timer is over
                     setIsFinished(true);
                     setIsRunning(false);
                 }
@@ -53,6 +52,7 @@ const Clock = () => {
     return (
         <>
         <h1>Pomodoro Clock</h1>
+        {isFinished && <span className="finished-timer-text">The timer has finished!</span> }
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
         <div className="button-wrapper">
           <button onClick={handleStart} type="button" className="start-button">Start</button>

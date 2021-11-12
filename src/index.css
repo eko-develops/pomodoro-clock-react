@@ -80,3 +80,7 @@ button{
 .settings-button{
     background-color: teal;
 }
+
+.finished-timer-text{
+    color: lightgreen;
+}
