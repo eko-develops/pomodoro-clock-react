@@ -71,9 +71,12 @@ const Clock = () => {
     return (
         <>
         <h1>Pomodoro Clock</h1>
+        <div className="finished-timer-text-wrapper">
         {isFinished &&
         <span className="finished-timer-text">The timer has finished!</span>
+
         }
+        </div>
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
         <div className="button-wrapper">
             {!rest
@@ -85,9 +88,9 @@ const Clock = () => {
           <button onClick={handlePause} type="button" className="pause-button">Pause</button>
           <button onClick={handleReset} type="button" className="reset-button">Reset</button>
         </div>  
-          {isRunning ? <div>running</div> : <div>not running</div>}
+          {/* {isRunning ? <div>running</div> : <div>not running</div>}
           {isFinished ? <div>finished</div> : <div>not finished</div>}
-          {rest ? <div>break</div> : <div>productivity</div>}
+          {rest ? <div>break</div> : <div>productivity</div>} */}
         </>
     )
 }
