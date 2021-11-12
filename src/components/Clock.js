@@ -2,36 +2,45 @@ import { useState, useEffect } from 'react';
 
 const Clock = () => {
 
-    const [minutes, setMinutes] = useState(0);
-    const [seconds, setSeconds] = useState(3);
+    const initialProdTimer = {
+        minutes: 25,
+        seconds: 3
+    }
+
+    const initialBreakTimer = {
+        minutes: 5,
+        seconds: 0
+    }
+
+    const [timer, setTimer] = useState(initialProdTimer);
     const [isRunning, setIsRunning] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
 
-    const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
-    const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
+    const timerMinutes = timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes;
+    const timerSeconds = timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds;
 
     useEffect(() => {
         if(isRunning){
         
-        const interval = setInterval( () => {
-            if(seconds === 0){
-                if(minutes !== 0){
-                    setSeconds(59);
-                    setMinutes(minutes - 1);
+            const interval = setInterval( () => {
+                console.log('running');
+                if(timer.seconds === 0){
+                    if(timer.minutes !== 0){
+                        setTimer({
+                            minutes: timer.minutes - 1,
+                            seconds: 59
+                        });
+                    }
                 } else {
-                    setIsFinished(true);
-                    setIsRunning(false);
+                    setTimer({minutes: timer.minutes, seconds: timer.seconds - 1});
                 }
-            } else {
-                setSeconds(seconds - 1);
-            }
-        }, 1000);
 
-        return () => clearInterval(interval);
+            }, 1000);
+
+            return () => clearInterval(interval);
             
         }
-        
-    }, [isRunning, seconds, minutes]);
+    }, [isRunning, timer]);
 
     const handleStart = () => {
         console.log('start clicked');
@@ -45,8 +54,7 @@ const Clock = () => {
         console.log('reset clicked');
         setIsRunning(false);
         setIsFinished(false);
-        setMinutes(25);
-        setSeconds(0);
+        setTimer(initialProdTimer);
     }
 
     return (
