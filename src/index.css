@@ -25,6 +25,16 @@ footer{
     text-align: center;
 }
 
+button{
+    margin: 1rem;
+    padding: 0.3rem 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: Poppins;
+    color: white;
+    border-radius: 5px;
+}
+
 .App{
     min-height: 100vh;
     background-color: #1b1b1b;
@@ -33,16 +43,6 @@ footer{
 .content{
     text-align: center;
     margin-top: 100px;
-}
-
-.button-wrapper > button{
-    margin: 1rem;
-    padding: 0.3rem 0.8rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: Poppins;
-    color: white;
-    border-radius: 5px;
 }
 
 .social-icon{
@@ -75,4 +75,8 @@ footer{
 
 .reset-button{
     background-color: tomato;
+}
+
+.settings-button{
+    background-color: teal;
 }
