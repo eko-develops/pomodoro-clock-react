@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 const Clock = () => {
 
     const initialProdTimer = {
-        minutes: 25,
-        seconds: 0
+        minutes: 0,
+        seconds: 5
     }
 
     const initialBreakTimer = {
-        minutes: 5,
-        seconds: 0
+        minutes: 0,
+        seconds: 3
     }
 
     const [timer, setTimer] = useState(initialProdTimer);
@@ -50,7 +50,7 @@ const Clock = () => {
             return () => clearInterval(interval);
 
         }
-    }, [isRunning, timer, rest]);
+    }, [isRunning, timer, rest, initialBreakTimer, initialProdTimer]);
 
     const handleStart = () => {
         console.log('start clicked');
@@ -66,14 +66,18 @@ const Clock = () => {
         setIsRunning(false);
         setIsFinished(false);
         setTimer(initialProdTimer);
+        setRest(false);
     }
 
     return (
         <>
         <h1>Pomodoro Clock</h1>
         <div className="finished-timer-text-wrapper">
-        {isFinished &&
-        <span className="finished-timer-text">The timer has finished!</span>
+        {(isFinished && rest) && 
+        <span className="finished-timer-text">The timer has finished!<br/><strong>It's time for your break.</strong></span>
+        }
+        {(isFinished && !rest) && 
+        <span className="finished-timer-text">The timer has finished!<br/><strong>It's time to get busy.</strong></span>
         }
         </div>
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
