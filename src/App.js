@@ -1,3 +1,4 @@
+import Clock from "./components/Clock";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
@@ -6,13 +7,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="content">
-        <h1>Pomodoro Clock</h1>
-        <h2 className="time">25:00</h2>
-        <div className="button-wrapper">
-          <button type="button" className="start-button">Start</button>
-          <button type="button" className="pause-button">Pause</button>
-          <button type="button" className="reset-button">Reset</button>
-        </div>
+        <Clock />
       </div>
       <Footer />
     </div>
