@@ -11,18 +11,21 @@ body{
     color: white;
 }
 
-header{
+header, footer{
     display: flex;
     justify-content: space-evenly;
     background-color: #111111;
-    padding: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+header span {
+    font-size: 0.8rem;
 }
 
 footer{
     position: absolute;
     bottom: 0;
-    width: 100%;
-    text-align: center;
 }
 
 button{
@@ -61,6 +64,7 @@ a:hover, button:hover{
 
 .single-social > a {
     display: flex;
+    align-items: center;
 }
 
 .single-social > a > span{
@@ -82,10 +86,6 @@ a:hover, button:hover{
 
 .reset-button{
     background-color: tomato;
-}
-
-.settings-button{
-    background-color: teal;
 }
 
 .finished-timer-text{
