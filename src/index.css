@@ -36,6 +36,21 @@ button{
     cursor: pointer;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
+button, a{
+    transition: all 0.3s ease-out 0s;
+}
+
+a:hover, button:hover{
+    opacity: 0.6;
+}
+
+
+
 .App{
     min-height: 100vh;
     background-color: #1b1b1b;
@@ -46,18 +61,8 @@ button{
     margin-top: 100px;
 }
 
-.social-icon{
-    width: 25px;
-    height: 25px;
-    background-color: green;
-    border-radius: 50%;
-    display: inline-block;
-}
-
 .single-social > a {
     display: flex;
-    text-decoration: none;
-    color: white;
 }
 
 .single-social > a > span{

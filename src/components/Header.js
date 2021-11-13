@@ -8,10 +8,8 @@ const Header = () => {
             </div>
             <div className="socials">
             <div className="single-social">
-                <a href="#">
+                <a target="_blank" href="https://github.com/eko-develops">
                     <BsGithub size={25} />
-                    {/* <div className="social-icon">
-                    </div> */}
                     <span>GitHub</span>
                 </a>
             </div>
