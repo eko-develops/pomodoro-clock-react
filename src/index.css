@@ -19,7 +19,7 @@ header, footer{
     width: 100%;
 }
 
-header span {
+header span, footer span {
     font-size: 0.8rem;
 }
 
