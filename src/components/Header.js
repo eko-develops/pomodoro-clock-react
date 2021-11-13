@@ -1,14 +1,19 @@
+import { BsGithub } from 'react-icons/bs';
+
 const Header = () => {
     return (
         <header>
             <div className="brand">
-            ekodevelops
+            <span>eko-develops</span>
             </div>
             <div className="socials">
             <div className="single-social">
-                <div className="social-icon">
-                </div>
-                <span>GitHub</span>
+                <a href="#">
+                    <BsGithub size={25} />
+                    {/* <div className="social-icon">
+                    </div> */}
+                    <span>GitHub</span>
+                </a>
             </div>
             </div>
       </header>

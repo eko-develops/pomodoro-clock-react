@@ -54,13 +54,16 @@ button{
     display: inline-block;
 }
 
-.single-social{
+.single-social > a {
     display: flex;
+    text-decoration: none;
+    color: white;
 }
 
-.single-social > span{
+.single-social > a > span{
     margin-left: 5px;
 }
+
 
 .time{
     font-size: 5rem;
