@@ -2,16 +2,6 @@ import { useState, useEffect } from 'react';
 
 const Clock = ({initialProdTimer, initialBreakTimer}) => {
 
-    // const initialProdTimer = {
-    //     minutes: 0,
-    //     seconds: 5
-    // }
-
-    // const initialBreakTimer = {
-    //     minutes: 0,
-    //     seconds: 3
-    // }
-
     const [timer, setTimer] = useState(initialProdTimer);
     const [isRunning, setIsRunning] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
