@@ -82,13 +82,7 @@ const Clock = () => {
         </div>
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
         <div className="button-wrapper">
-            {!rest
-            ?
-            <button onClick={handleStart} type="button" className="start-button">Start Productivity</button>
-            :
-            <button onClick={handleStart} type="button" className="start-button">Start Break</button>
-            }
-          <button onClick={handlePause} type="button" className="pause-button">Pause</button>
+          <button onClick={isRunning ? handlePause : handleStart} type="button" className={isRunning ? "pause-button" : "start-button" }>{isRunning ? "Pause" : "Start"}</button>
           <button onClick={handleReset} type="button" className="reset-button">Reset</button>
         </div>  
           {/* {isRunning ? <div>running</div> : <div>not running</div>}

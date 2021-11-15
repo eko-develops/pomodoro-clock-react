@@ -8,7 +8,7 @@ const Header = () => {
             </div>
             <div className="socials">
             <div className="single-social">
-                <a target="_blank" href="https://github.com/eko-develops">
+                <a target="_blank" rel="noreferrer" href="https://github.com/eko-develops">
                     <BsGithub size={25} />
                     <span>eko-develops</span>
                 </a>
