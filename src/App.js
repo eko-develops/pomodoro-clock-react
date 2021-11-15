@@ -7,12 +7,12 @@ function App() {
   const initialProdTimer = {
     minutes: 0,
     seconds: 5
-}
+  }
 
-const initialBreakTimer = {
+  const initialBreakTimer = {
     minutes: 0,
     seconds: 3
-}
+  }
 
   return (
     <div className="App">
