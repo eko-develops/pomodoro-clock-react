@@ -17,6 +17,7 @@ header, footer{
     background-color: #111111;
     padding: 0.5rem;
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 header span, footer span {
@@ -37,6 +38,7 @@ button{
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 a{
