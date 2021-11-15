@@ -50,7 +50,7 @@ const Clock = () => {
             return () => clearInterval(interval);
 
         }
-    }, [isRunning, timer, rest, initialBreakTimer, initialProdTimer]);
+    }, [isRunning, timer, rest, initialProdTimer, initialBreakTimer]);
 
     const handleStart = () => {
         console.log('start clicked');
@@ -71,7 +71,7 @@ const Clock = () => {
 
     return (
         <>
-        <h1>Pomodoro Clock</h1>
+        <h1>Let's Pomodoro</h1>
         <div className="finished-timer-text-wrapper">
         {(isFinished && rest) && 
         <span className="finished-timer-text">The timer has finished!<br/><strong>It's time for your break.</strong></span>
