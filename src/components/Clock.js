@@ -18,6 +18,7 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
     useEffect(() => {
 
         if(isRunning){
+            document.title = rest ? `${timerMinutes}:${timerSeconds} - On break..` : `${timerMinutes}:${timerSeconds} - Working..`;
         
             const interval = setInterval( () => {
                 if(timer.seconds === 0){
@@ -31,9 +32,11 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
                         setIsFinished(true);
                         setRest(!rest);
                         if(rest){
+                            document.title = `${timerMinutes}:${timerSeconds} - Time to work!`;
                             setTimer(timers.prodTimer);
                             playFinishedProdSound();
                         } else {
+                            document.title = `${timerMinutes}:${timerSeconds} - It's break time!`;
                             setTimer(timers.breakTimer);
                             playFinishedBreakSound();
                         }
@@ -47,7 +50,7 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
             return () => clearInterval(interval);
 
         }
-    }, [isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound]);
+    }, [isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound, timerMinutes, timerSeconds]);
 
     const handleStart = () => {
         console.log('start clicked');
@@ -67,6 +70,7 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
         setTimer(timers.prodTimer);
         setRest(false);
         playClickSound();
+        document.title = `Pomodoro Clock`;
     }
 
     const handleSettings = () => {

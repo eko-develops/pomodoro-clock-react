@@ -1,10 +1,14 @@
 import Clock from "./components/Clock";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SettingsForm from "./components/SettingsForm";
 
 function App() {
+
+  useEffect( () => {
+    document.title = `Pomodoro Clock`;
+  }, [] );
 
   const uiClickAudio = new Audio("/sounds/ui-click.wav");
   const prodFinishedAudio = new Audio("/sounds/finished-prod-sound.wav");
