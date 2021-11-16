@@ -72,6 +72,11 @@ button:disabled{
     margin-top: 100px;
 }
 
+.content > p {
+    width: 80%;
+    margin: auto;
+}
+
 .single-social>a {
     display: flex;
     align-items: center;
@@ -166,4 +171,7 @@ button:disabled{
 
 @media all and (min-width: 992px) {
 
+    .content > p {
+        width: 600px;
+    }
 }
