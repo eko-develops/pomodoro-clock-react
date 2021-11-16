@@ -73,7 +73,8 @@ function App() {
 
   const handleSwitchChange = (e) => {
     setSwitchValue(e.target.checked);
-    setRest( prev => !prev)
+    setRest( prev => !prev);
+    playClickSound();
   }
 
   return (
