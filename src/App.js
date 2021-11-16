@@ -6,17 +6,17 @@ import SettingsForm from "./components/SettingsForm";
 
 function App() {
 
-  useEffect( () => {
-    document.title = `Pomodoro Clock`;
-    uiClickAudio.volume = 0.6;
-    prodFinishedAudio.volume = 0.1;
-    breakFinishedAudio.volume = 0.1;
-  }, [] );
-
   const uiClickAudio = new Audio("/sounds/ui-click.wav");
   const prodFinishedAudio = new Audio("/sounds/finished-prod-sound.wav");
   const breakFinishedAudio = new Audio("/sounds/finished-break-sound.wav");
 
+  useEffect( () => {
+    document.title = `Pomodoro Clock`;
+  }, [] );
+
+  uiClickAudio.volume = 0.6;
+  prodFinishedAudio.volume = 0.1;
+  breakFinishedAudio.volume = 0.1;
 
   //set as an object to add a slider that controls volume in the future
   // const [volumeLevel, setVolumeLevel] = useState({
