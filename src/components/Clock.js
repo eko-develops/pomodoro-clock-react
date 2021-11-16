@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const Clock = ({initialProdTimer, initialBreakTimer}) => {
+const Clock = ({ timers }) => {
 
-    const [timer, setTimer] = useState(initialProdTimer);
+    const [timer, setTimer] = useState(timers.prodTimer);
     const [isRunning, setIsRunning] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     const [rest, setRest] = useState(false);
@@ -26,9 +26,9 @@ const Clock = ({initialProdTimer, initialBreakTimer}) => {
                         setIsFinished(true);
                         setRest(!rest);
                         if(rest){
-                            setTimer(initialProdTimer);
+                            setTimer(timers.prodTimer);
                         } else {
-                            setTimer(initialBreakTimer);
+                            setTimer(timers.breakTimer);
                         }
                     }
                 } else {
@@ -40,7 +40,7 @@ const Clock = ({initialProdTimer, initialBreakTimer}) => {
             return () => clearInterval(interval);
 
         }
-    }, [isRunning, timer, rest, initialProdTimer, initialBreakTimer]);
+    }, [isRunning, timer, rest, timers]);
 
     const handleStart = () => {
         console.log('start clicked');
@@ -55,7 +55,7 @@ const Clock = ({initialProdTimer, initialBreakTimer}) => {
         console.log('reset clicked');
         setIsRunning(false);
         setIsFinished(false);
-        setTimer(initialProdTimer);
+        setTimer(timers.prodTimer);
         setRest(false);
     }
 
