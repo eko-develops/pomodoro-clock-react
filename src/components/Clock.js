@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Clock = ({ timers }) => {
+const Clock = ({ timers, setDisplaySettings }) => {
 
     const [timer, setTimer] = useState(timers.prodTimer);
     const [isRunning, setIsRunning] = useState(false);
@@ -59,6 +59,11 @@ const Clock = ({ timers }) => {
         setRest(false);
     }
 
+    const handleSettings = () => {
+        setDisplaySettings(false);
+        console.log('settings clicked');
+    }
+
     return (
         <>
         <h1>Let's Pomodoro</h1>
@@ -74,6 +79,7 @@ const Clock = ({ timers }) => {
         <div className="button-wrapper">
           <button onClick={isRunning ? handlePause : handleStart} type="button" className={isRunning ? "pause-button start-pause" : "start-button start-pause" }>{isRunning ? "Pause" : "Start"}<br/>{rest ? "BREAK" : "PRODUCTIVITY"}</button>
           <button onClick={handleReset} type="button" className="reset-button">Reset</button>
+          <button onClick={handleSettings} type="button" className="settings-button">Settings</button>
         </div>  
           {/* {isRunning ? <div>running</div> : <div>not running</div>}
           {isFinished ? <div>finished</div> : <div>not finished</div>}

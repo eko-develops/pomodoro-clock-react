@@ -5,6 +5,8 @@ import { useState } from 'react';
 
 function App() {
 
+  const [displaySettings, setDisplaySettings] = useState(false);
+
   const [timers, setTimers] = useState({
     prodTimer: {
       minutes: 25,
@@ -20,7 +22,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="content">
-        <Clock timers={timers} setTimers={setTimers} />
+        <Clock setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
       </div>
       <Footer />
     </div>
