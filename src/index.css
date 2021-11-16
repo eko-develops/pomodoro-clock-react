@@ -69,7 +69,7 @@ button:disabled{
 
 .content {
     text-align: center;
-    margin-top: 180px;
+    margin-top: 110px;
 }
 
 .content > p {
@@ -173,6 +173,10 @@ button:disabled{
 
 .start-reset-wrapper button{
     width: 100%;
+}
+
+.current-settings-title{
+    text-decoration: underline;
 }
 
 @media all and (min-width: 576px) {

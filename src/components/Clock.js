@@ -67,8 +67,8 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
         console.log('reset clicked');
         setIsRunning(false);
         setIsFinished(false);
-        setTimer(timers.prodTimer);
-        setRest(false);
+        setTimer(currentTimer);
+        // setRest(false);
         playClickSound();
         document.title = `Pomodoro Clock`;
     }

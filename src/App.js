@@ -55,6 +55,8 @@ function App() {
     <div className="App">
       <Header />
       <div className="content">
+        <div><strong className="current-settings-title">Custom Settings</strong><br/><strong>Productivity Timer:</strong> {timers.prodTimer.minutes} minutes</div>
+        <div><strong>Break Timer:</strong> {timers.breakTimer.minutes} minutes</div>
         <SettingsForm playClickSound={playClickSound} timers={timers} setTimers={setTimers} customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
         <Clock displaySettings={displaySettings} playFinishedBreakSound={playFinishedBreakSound} playFinishedProdSound={playFinishedProdSound} playClickSound={playClickSound} setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
         <p>The initial working timer is set to 5 seconds and break timer is set to 3 seconds. This is intended to allow testing of the audio sounds and switching between working and break timers.</p>
