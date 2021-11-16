@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Clock = ({ timers, setDisplaySettings }) => {
+const Clock = ({ timers, setDisplaySettings, playClickSound }) => {
 
     const [isRunning, setIsRunning] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
@@ -51,10 +51,12 @@ const Clock = ({ timers, setDisplaySettings }) => {
         console.log('start clicked');
         setIsFinished(false);
         setIsRunning(true);
+        playClickSound();
     }
     const handlePause = () => {
         console.log('pause clicked');
         setIsRunning(false);
+        playClickSound();
     }
     const handleReset = () => {
         console.log('reset clicked');
@@ -62,11 +64,13 @@ const Clock = ({ timers, setDisplaySettings }) => {
         setIsFinished(false);
         setTimer(timers.prodTimer);
         setRest(false);
+        playClickSound();
     }
 
     const handleSettings = () => {
         setDisplaySettings(true);
         console.log('settings clicked');
+        playClickSound();
     }
 
     return (

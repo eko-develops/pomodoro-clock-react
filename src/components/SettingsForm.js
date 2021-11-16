@@ -1,13 +1,15 @@
-const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCustomTimers, timers, setTimers}) => {
+const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCustomTimers, setTimers, playClickSound}) => {
 
     const modalViewClass = displaySettings ? "modal-bg show-modal" : "modal-bg";
 
     const handleCancel = () => {
         setDisplaySettings(false);
+        playClickSound();
     }
 
     //only used for display minutes label for prod
     const handleProdChange = (e) => {
+        playClickSound();
         setCustomTimers({
             ...customTimers,
             prodTimer : {
@@ -19,6 +21,7 @@ const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCus
     
     //only used for display minutes label for break
     const handleBreakChange = (e) => {
+        playClickSound();
         setCustomTimers({
             ...customTimers,
             breakTimer : {
@@ -43,6 +46,7 @@ const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCus
             }
         });
         setDisplaySettings(false);
+        playClickSound();
     }
 
     return (

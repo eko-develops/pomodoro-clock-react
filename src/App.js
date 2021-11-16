@@ -6,6 +6,12 @@ import SettingsForm from "./components/SettingsForm";
 
 function App() {
 
+  const uiClickAudio = new Audio("/sounds/ui-click.wav");
+
+  const playClickSound = () => {
+    uiClickAudio.play();
+  }
+
   const [displaySettings, setDisplaySettings] = useState(false);
 
   //used only for display labels on settings modal
@@ -35,8 +41,8 @@ function App() {
     <div className="App">
       <Header />
       <div className="content">
-        <SettingsForm timers={timers} setTimers={setTimers} customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
-        <Clock setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
+        <SettingsForm playClickSound={playClickSound} timers={timers} setTimers={setTimers} customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
+        <Clock playClickSound={playClickSound} setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
       </div>
       <Footer />
     </div>
