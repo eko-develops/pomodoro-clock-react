@@ -48,7 +48,7 @@ const Clock = ({isRunning, setIsRunning, rest, setRest, timers, setDisplaySettin
             return () => clearInterval(interval);
 
         }
-    }, [isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound, timerMinutes, timerSeconds, setRest]);
+    }, [setIsRunning, isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound, timerMinutes, timerSeconds, setRest]);
 
     const handleStart = () => {
         console.log('start clicked');
