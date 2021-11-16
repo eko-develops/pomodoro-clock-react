@@ -161,4 +161,13 @@ button:hover {
     .button-wrapper {
         max-width: 576px;
     }
+    
+    .modal-content {
+        max-width: 500px;
+    }
+    
+}
+
+@media all and (min-width: 992px) {
+
 }
