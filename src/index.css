@@ -151,7 +151,7 @@ button:disabled{
 
 .modal-content {
     padding: 1rem;
-    background-color: rgba(80, 80, 80, 0.95);
+    background-color: rgba(46, 46, 46, 0.95);
     margin: 1rem;
     border-radius: 7px;
     height: 320px;
@@ -176,6 +176,10 @@ button:disabled{
 }
 
 .current-settings-title{
+    text-decoration: underline;
+}
+
+form label{
     text-decoration: underline;
 }
 
