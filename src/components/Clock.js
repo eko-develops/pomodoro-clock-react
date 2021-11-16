@@ -90,9 +90,16 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
         }
         </div>
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
+
+        
+
         <div className="main-button-wrapper">
 
         <div className="button-wrapper">
+
+        {/* <div className="volume-control">
+            <input type="range" min="0" max="1" step="0.1" />
+        </div> */}
                 <div className="start-reset-wrapper">
                     <button onClick={isRunning ? handlePause : handleStart} type="button" className={isRunning ? "pause-button start-pause" : "start-button start-pause" }>{isRunning ? "Pause" : "Start"}<br/>{rest ? "BREAK" : "PRODUCTIVITY"}</button>
                     <button onClick={handleReset} type="button" className="reset-button">Reset</button>
