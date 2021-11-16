@@ -90,11 +90,16 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
         }
         </div>
         <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
+        <div className="main-button-wrapper">
+
         <div className="button-wrapper">
-          <button onClick={isRunning ? handlePause : handleStart} type="button" className={isRunning ? "pause-button start-pause" : "start-button start-pause" }>{isRunning ? "Pause" : "Start"}<br/>{rest ? "BREAK" : "PRODUCTIVITY"}</button>
-          <button onClick={handleReset} type="button" className="reset-button">Reset</button>
-          <button onClick={handleSettings} disabled={isRunning ? true : false} type="button" className="settings-button">Settings</button>
-        </div>  
+                <div className="start-reset-wrapper">
+                    <button onClick={isRunning ? handlePause : handleStart} type="button" className={isRunning ? "pause-button start-pause" : "start-button start-pause" }>{isRunning ? "Pause" : "Start"}<br/>{rest ? "BREAK" : "PRODUCTIVITY"}</button>
+                    <button onClick={handleReset} type="button" className="reset-button">Reset</button>
+                </div>
+                <button onClick={handleSettings} disabled={isRunning ? true : false} type="button" className="settings-button">Settings</button>
+            </div>  
+        </div>
           {/* {isRunning ? <div>running</div> : <div>not running</div>}
           {isFinished ? <div>finished</div> : <div>not finished</div>}
           {rest ? <div>break</div> : <div>productivity</div>} */}

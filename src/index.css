@@ -69,7 +69,7 @@ button:disabled{
 
 .content {
     text-align: center;
-    margin-top: 100px;
+    margin-top: 180px;
 }
 
 .content > p {
@@ -114,8 +114,15 @@ button:disabled{
 .button-wrapper {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    margin: auto;
+    width: 90%;
+}
+
+.main-button-wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    bottom: 10%;
 }
 
 .settings-button {
@@ -158,6 +165,16 @@ button:disabled{
     text-align: left;
 }
 
+.start-reset-wrapper{
+    display: flex;
+    justify-content: center;
+
+}
+
+.start-reset-wrapper button{
+    width: 100%;
+}
+
 @media all and (min-width: 576px) {
     .button-wrapper {
         max-width: 576px;
@@ -166,6 +183,10 @@ button:disabled{
     .modal-content {
         max-width: 500px;
     }
+
+    .time {
+        font-size: 5.5rem;
+    }
     
 }
 
@@ -173,5 +194,9 @@ button:disabled{
 
     .content > p {
         width: 600px;
+    }
+
+    .time {
+        font-size: 8rem;
     }
 }
