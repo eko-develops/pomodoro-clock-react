@@ -1,4 +1,4 @@
-const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCustomTimers}) => {
+const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCustomTimers, timers, setTimers}) => {
 
     const modalViewClass = displaySettings ? "modal-bg show-modal" : "modal-bg";
 
@@ -28,10 +28,27 @@ const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCus
         });
     }
 
+    const handleSave = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        setTimers({
+            prodTimer:{
+                minutes: formData.get('prod-mins'),
+                seconds: 0
+            },
+            breakTimer:{
+                minutes: formData.get('break-mins'),
+                seconds: 0
+            }
+        });
+        setDisplaySettings(false);
+    }
+
     return (
         <div className={modalViewClass}>
             <div className="modal-content">
-                <form>
+                <form onSubmit={e => handleSave(e)}>
                     <label>Productivity</label>
                     <span>{customTimers.prodTimer.minutes} minutes</span>
                     <input onChange={e => handleProdChange(e)} value={customTimers.prodTimer.minutes} name="prod-mins" type="range" min="5" max="120" step="5" />

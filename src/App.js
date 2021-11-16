@@ -35,7 +35,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="content">
-        <SettingsForm customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
+        <SettingsForm timers={timers} setTimers={setTimers} customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
         <Clock setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
       </div>
       <Footer />

@@ -11,6 +11,10 @@ const Clock = ({ timers, setDisplaySettings }) => {
     const timerMinutes = timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes;
     const timerSeconds = timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds;
 
+    useEffect( () => {
+        setTimer(currentTimer);
+    }, [timers, currentTimer])
+
     useEffect(() => {
 
         if(isRunning){
