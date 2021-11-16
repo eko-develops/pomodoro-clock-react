@@ -34,7 +34,7 @@ button{
     padding: 0.8rem 0.8rem;
     text-transform: uppercase;
     font-weight: bold;
-    font-family: Poppins;
+    font-family: 'Poppins', sans-serif;
     color: white;
     border-radius: 5px;
     cursor: pointer;
