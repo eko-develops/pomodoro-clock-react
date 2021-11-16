@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Clock = ({ timers, setDisplaySettings, playClickSound }) => {
+const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSound, playFinishedBreakSound}) => {
 
     const [isRunning, setIsRunning] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
@@ -32,8 +32,10 @@ const Clock = ({ timers, setDisplaySettings, playClickSound }) => {
                         setRest(!rest);
                         if(rest){
                             setTimer(timers.prodTimer);
+                            playFinishedProdSound();
                         } else {
                             setTimer(timers.breakTimer);
+                            playFinishedBreakSound();
                         }
                     }
                 } else {
@@ -45,7 +47,7 @@ const Clock = ({ timers, setDisplaySettings, playClickSound }) => {
             return () => clearInterval(interval);
 
         }
-    }, [isRunning, timer, rest, timers]);
+    }, [isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound]);
 
     const handleStart = () => {
         console.log('start clicked');
@@ -75,7 +77,6 @@ const Clock = ({ timers, setDisplaySettings, playClickSound }) => {
 
     return (
         <>
-        <h1>Let's Pomodoro</h1>
         <div className="finished-timer-text-wrapper">
         {(isFinished && rest) && 
         <span className="finished-timer-text">The timer has finished!<br/><strong>It's time for your break.</strong></span>

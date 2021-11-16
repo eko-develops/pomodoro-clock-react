@@ -7,6 +7,16 @@ import SettingsForm from "./components/SettingsForm";
 function App() {
 
   const uiClickAudio = new Audio("/sounds/ui-click.wav");
+  const prodFinishedAudio = new Audio("/sounds/finished-prod-sound.wav");
+  const breakFinishedAudio = new Audio("/sounds/finished-break-sound.wav");
+  
+  const playFinishedBreakSound = () => {
+    breakFinishedAudio.play();
+  }
+
+  const playFinishedProdSound = () => {
+    prodFinishedAudio.play();
+  }
 
   const playClickSound = () => {
     uiClickAudio.play();
@@ -42,7 +52,7 @@ function App() {
       <Header />
       <div className="content">
         <SettingsForm playClickSound={playClickSound} timers={timers} setTimers={setTimers} customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
-        <Clock playClickSound={playClickSound} setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
+        <Clock playFinishedBreakSound={playFinishedBreakSound} playFinishedProdSound={playFinishedProdSound} playClickSound={playClickSound} setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
       </div>
       <Footer />
     </div>
