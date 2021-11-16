@@ -60,7 +60,7 @@ const Clock = ({ timers, setDisplaySettings }) => {
     }
 
     const handleSettings = () => {
-        setDisplaySettings(false);
+        setDisplaySettings(true);
         console.log('settings clicked');
     }
 
