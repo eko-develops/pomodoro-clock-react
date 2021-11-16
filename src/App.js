@@ -8,6 +8,17 @@ function App() {
 
   const [displaySettings, setDisplaySettings] = useState(false);
 
+  const [customTimers, setCustomTimers] = useState({
+    prodTimer: {
+      minutes: 25,
+      seconds: 0
+    },
+    breakTimer:{
+      minutes: 5,
+      seconds: 0,
+    }
+  });
+
   const [timers, setTimers] = useState({
     prodTimer: {
       minutes: 25,
@@ -23,7 +34,7 @@ function App() {
     <div className="App">
       <Header />
       <div className="content">
-        <SettingsForm setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
+        <SettingsForm customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
         <Clock setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
       </div>
       <Footer />

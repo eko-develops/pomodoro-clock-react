@@ -1,4 +1,4 @@
-const SettingsForm = ({displaySettings, setDisplaySettings}) => {
+const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCustomTimers}) => {
 
     const modalViewClass = displaySettings ? "modal-bg show-modal" : "modal-bg";
 
@@ -6,16 +6,26 @@ const SettingsForm = ({displaySettings, setDisplaySettings}) => {
         setDisplaySettings(false);
     }
 
+    const handleProdChange = (e) => {
+        setCustomTimers({
+            ...customTimers,
+            prodTimer : {
+                minutes: e.target.value,
+                seconds: 0
+            }
+        });
+    }
+
     return (
         <div className={modalViewClass}>
             <div className="modal-content">
                 <form>
                     <label>Productivity</label>
-                    <span>productivity minutes</span>
-                    <input name="prod-mins" type="range" min="5" max="120" step="5" />
+                    <span>{customTimers.prodTimer.minutes} minutes</span>
+                    <input onChange={e => handleProdChange(e)} value={customTimers.prodTimer.minutes} name="prod-mins" type="range" min="5" max="120" step="5" />
                     <label>Break</label>
-                    <span>break minutes</span>
-                    <input name="break-mins" type="range" min="5" max="120" step="5" />
+                    <span>{customTimers.breakTimer.minutes} minutes</span>
+                    <input value={customTimers.breakTimer.minutes} name="break-mins" type="range" min="5" max="120" step="5" />
                     <button type="submit" className="start-button">Save</button>
                     <button onClick={handleCancel} type="button" className="reset-button">Cancel</button>
                 </form>
