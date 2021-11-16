@@ -6,6 +6,7 @@ const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCus
         setDisplaySettings(false);
     }
 
+    //only used for display minutes label for prod
     const handleProdChange = (e) => {
         setCustomTimers({
             ...customTimers,
@@ -15,7 +16,8 @@ const SettingsForm = ({displaySettings, setDisplaySettings, customTimers, setCus
             }
         });
     }
-
+    
+    //only used for display minutes label for break
     const handleBreakChange = (e) => {
         setCustomTimers({
             ...customTimers,

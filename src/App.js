@@ -8,6 +8,7 @@ function App() {
 
   const [displaySettings, setDisplaySettings] = useState(false);
 
+  //used only for display labels on settings modal
   const [customTimers, setCustomTimers] = useState({
     prodTimer: {
       minutes: 25,
@@ -21,12 +22,12 @@ function App() {
 
   const [timers, setTimers] = useState({
     prodTimer: {
-      minutes: 25,
-      seconds: 0
+      minutes: 0,
+      seconds: 5
     },
     breakTimer: {
-      minutes: 5,
-      seconds: 0
+      minutes: 0,
+      seconds: 3
     }
   });
 

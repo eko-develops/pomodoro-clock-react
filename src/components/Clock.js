@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 
 const Clock = ({ timers, setDisplaySettings }) => {
 
-    const [timer, setTimer] = useState(timers.prodTimer);
     const [isRunning, setIsRunning] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     const [rest, setRest] = useState(false);
+    const currentTimer = rest ? timers.breakTimer : timers.prodTimer;
+    const [timer, setTimer] = useState(currentTimer);
 
     const timerMinutes = timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes;
     const timerSeconds = timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds;
