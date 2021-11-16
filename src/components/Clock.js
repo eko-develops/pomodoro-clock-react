@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSound, playFinishedBreakSound}) => {
+const Clock = ({isRunning, setIsRunning, rest, setRest, timers, setDisplaySettings, playClickSound, playFinishedProdSound, playFinishedBreakSound}) => {
 
-    const [isRunning, setIsRunning] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
-    const [rest, setRest] = useState(false);
     const currentTimer = rest ? timers.breakTimer : timers.prodTimer;
     const [timer, setTimer] = useState(currentTimer);
 
@@ -50,7 +48,7 @@ const Clock = ({ timers, setDisplaySettings, playClickSound, playFinishedProdSou
             return () => clearInterval(interval);
 
         }
-    }, [isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound, timerMinutes, timerSeconds]);
+    }, [isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound, timerMinutes, timerSeconds, setRest]);
 
     const handleStart = () => {
         console.log('start clicked');

@@ -183,6 +183,13 @@ form label{
     text-decoration: underline;
 }
 
+.switch-container{
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media all and (min-width: 576px) {
     .button-wrapper {
         max-width: 576px;

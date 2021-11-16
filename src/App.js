@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { useState, useEffect } from 'react';
 import SettingsForm from "./components/SettingsForm";
+import Switch from '@mui/material/Switch';
 
 function App() {
 
@@ -38,6 +39,9 @@ function App() {
     uiClickAudio.play();
   }
 
+  const [rest, setRest] = useState(false);
+
+
   const [displaySettings, setDisplaySettings] = useState(false);
 
   //used only for display labels on settings modal
@@ -63,6 +67,15 @@ function App() {
     }
   });
 
+  const [switchValue, setSwitchValue] = useState(false);
+
+  const [isRunning, setIsRunning] = useState(false);
+
+  const handleSwitchChange = (e) => {
+    setSwitchValue(e.target.checked);
+    setRest( prev => !prev)
+  }
+
   return (
     <div className="App">
       <Header />
@@ -70,7 +83,15 @@ function App() {
         <div><strong className="current-settings-title">Custom Settings</strong><br/><strong>Productivity Timer:</strong> {timers.prodTimer.minutes} minutes</div>
         <div><strong>Break Timer:</strong> {timers.breakTimer.minutes} minutes</div>
         <SettingsForm playClickSound={playClickSound} timers={timers} setTimers={setTimers} customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
-        <Clock displaySettings={displaySettings} playFinishedBreakSound={playFinishedBreakSound} playFinishedProdSound={playFinishedProdSound} playClickSound={playClickSound} setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
+        <Clock isRunning={isRunning} setIsRunning={setIsRunning} setRest={setRest} rest={rest} displaySettings={displaySettings} playFinishedBreakSound={playFinishedBreakSound} playFinishedProdSound={playFinishedProdSound} playClickSound={playClickSound} setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
+        <div className="switch-container">
+          <span>{rest ? 'Break Mode' : 'Productivity Mode'}</span>
+          <Switch
+          disabled={isRunning ? true : false} 
+          checked={switchValue}
+          onChange={e => handleSwitchChange(e)}
+          />
+        </div>
         <p>The initial working timer is set to 5 seconds and break timer is set to 3 seconds. This is intended to allow testing of the audio sounds and switching between working and break timers.</p>
       </div>
       <Footer />
