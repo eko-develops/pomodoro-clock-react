@@ -86,7 +86,7 @@ function App() {
         <SettingsForm playClickSound={playClickSound} timers={timers} setTimers={setTimers} customTimers={customTimers} setCustomTimers={setCustomTimers} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings}/>
         <Clock isRunning={isRunning} setIsRunning={setIsRunning} setRest={setRest} rest={rest} displaySettings={displaySettings} playFinishedBreakSound={playFinishedBreakSound} playFinishedProdSound={playFinishedProdSound} playClickSound={playClickSound} setDisplaySettings={setDisplaySettings} timers={timers} setTimers={setTimers} />
         <div className="switch-container">
-          <span>{rest ? 'Break Mode' : 'Productivity Mode'}</span>
+          <span>{rest ? 'Break' : 'Work'}</span>
           <Switch
           disabled={isRunning ? true : false} 
           checked={switchValue}
