@@ -93,7 +93,7 @@ function App() {
           onChange={e => handleSwitchChange(e)}
           />
         </div>
-        <p>The initial working timer is set to 5 seconds and break timer is set to 3 seconds. This is intended to allow testing of the audio sounds and switching between working and break timers.</p>
+        {/* <p>The initial working timer is set to 5 seconds and break timer is set to 3 seconds. This is intended to allow testing of the audio sounds and switching between working and break timers.</p> */}
       </div>
       <Footer />
     </div>
