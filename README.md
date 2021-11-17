@@ -2,16 +2,15 @@
 
 ## Purpose
 
-----------------------------------------------------------------
 This project was completed as a learning experience and as a group exercise. It is created with mainly ReactJS and some components from the Material UI library. A mobile first approach was kept in mind while developing the front-end of the app.
 
 ## Example
-----------------------------------------------------------------
+
 
 <img src="example-images/mobile-ss.png" width="300px">
 
 ## Features
-----------------------------------------------------------------
+
 ### User Stories
 1. User can see a timer for 25 minutes - the working session  
 
@@ -50,7 +49,7 @@ This project was completed as a learning experience and as a group exercise. It 
 
 
 ## Dependencies
-----------------------------------------------------------------
+
  - react 17.0.2
  - react-icons 4.3.1
  - @emotion/react 11.6.0
@@ -58,7 +57,7 @@ This project was completed as a learning experience and as a group exercise. It 
  - @mui/material 5.1.1
 
 ## Todo
-----------------------------------------------------------------
+
 - Add long break timer
 - Refactor
 - Change modal to show the react way instead of with CSS
