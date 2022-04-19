@@ -1,115 +1,133 @@
-import { useState, useEffect } from 'react';
+import ClockDisplay from "./ClockDisplay.js";
+import ClockControls from "./ClockControls.js";
+import { useState, useEffect, useRef } from "react";
+import ClockSettings from "./ClockSettings.js";
 
-const Clock = ({isRunning, setIsRunning, rest, setRest, timers, setDisplaySettings, playClickSound, playFinishedProdSound, playFinishedBreakSound}) => {
+export default function Clock() {
+  const defaultClockTime = {
+    currentClock: "work",
+    work: {
+      minutes: 0,
+      seconds: 3,
+    },
+    break: {
+      minutes: 0,
+      seconds: 5,
+    },
+  };
 
-    const [isFinished, setIsFinished] = useState(false);
-    const currentTimer = rest ? timers.breakTimer : timers.prodTimer;
-    const [timer, setTimer] = useState(currentTimer);
+  const [isRunning, setIsRunning] = useState(false); //intially clock not running
+  const [clockTime, setClockTime] = useState(defaultClockTime); //initally set default clock to work, will later be determined by customSettingsRef
+  const customSettingsRef = useRef(defaultClockTime); //ref needed to store custom settings. mainly for reset
+  const currentClockRef = useRef(clockTime.currentClock);
+  const [viewSettings, setViewSettings] = useState(false);
 
-    const timerMinutes = timer.minutes < 10 ? `0${timer.minutes}` : timer.minutes;
-    const timerSeconds = timer.seconds < 10 ? `0${timer.seconds}` : timer.seconds;
+  const clockSettings = viewSettings && (
+    <ClockSettings
+      setClockTime={setClockTime}
+      customSettingsRef={customSettingsRef}
+      setViewSettings={setViewSettings}
+      viewSettings={viewSettings}
+    />
+  );
 
-    useEffect( () => {
-        setTimer(currentTimer);
-    }, [timers, currentTimer])
+  useEffect(() => {
+    if (isRunning) {
+      const interval = setInterval(() => {
+        if (clockTime[currentClockRef.current].seconds === 0) {
+          if (clockTime[currentClockRef.current].minutes !== 0) {
+            //handle if seconds hits less than 0 and there are still minutes left, reduce minutes and set seconds
+            setClockTime({
+              ...clockTime,
+              [currentClockRef.current]: {
+                minutes: clockTime[currentClockRef.current].minutes - 1,
+                seconds: 59,
+              },
+            });
+          } else {
+            //if the minutes is 0, and seconds is 0, timer is finished.
+            setIsRunning(false);
+            if (clockTime.currentClock === "work") {
+              currentClockRef.current = "break";
 
-    useEffect(() => {
+              setClockTime({
+                ...clockTime,
+                work: customSettingsRef.current.work,
+                currentClock: "break",
+              });
+            } else {
+              currentClockRef.current = "work";
 
-        if(isRunning){
-            document.title = rest ? `${timerMinutes}:${timerSeconds} - On break..` : `${timerMinutes}:${timerSeconds} - Working..`;
-        
-            const interval = setInterval( () => {
-                if(timer.seconds === 0){
-                    if(timer.minutes !== 0){
-                        setTimer({
-                            minutes: timer.minutes - 1,
-                            seconds: 59
-                        });
-                    } else {
-                        setIsRunning(false);
-                        setIsFinished(true);
-                        setRest(!rest);
-                        if(rest){
-                            document.title = `${timerMinutes}:${timerSeconds} - Time to work!`;
-                            setTimer(timers.prodTimer);
-                            playFinishedProdSound();
-                        } else {
-                            document.title = `${timerMinutes}:${timerSeconds} - It's break time!`;
-                            setTimer(timers.breakTimer);
-                            playFinishedBreakSound();
-                        }
-                    }
-                } else {
-                    setTimer({minutes: timer.minutes, seconds: timer.seconds - 1});
-                }
-
-            }, 1000);
-
-            return () => clearInterval(interval);
-
+              setClockTime({
+                ...clockTime,
+                break: customSettingsRef.current.break,
+                currentClock: "work",
+              });
+            }
+          }
+        } else {
+          //if seconds is not 0, count down normally
+          setClockTime({
+            ...clockTime,
+            [currentClockRef.current]: {
+              ...clockTime[currentClockRef.current],
+              seconds: clockTime[currentClockRef.current].seconds - 1,
+            },
+          });
         }
-    }, [setIsRunning, isRunning, timer, rest, timers, playFinishedProdSound, playFinishedBreakSound, timerMinutes, timerSeconds, setRest]);
+      }, 1000);
 
-    const handleStart = () => {
-        console.log('start clicked');
-        setIsFinished(false);
-        setIsRunning(true);
-        playClickSound();
+      return () => clearInterval(interval);
     }
-    const handlePause = () => {
-        console.log('pause clicked');
-        setIsRunning(false);
-        playClickSound();
-    }
-    const handleReset = () => {
-        console.log('reset clicked');
-        setIsRunning(false);
-        setIsFinished(false);
-        setTimer(currentTimer);
-        // setRest(false);
-        playClickSound();
-        document.title = `Pomodoro Clock`;
+  }, [isRunning, clockTime]);
+
+  const handleClockSwitch = (e) => {
+    let id = e.target.id;
+    if (id === "work-switch") {
+      id = "work";
+    } else {
+      id = "break";
     }
 
-    const handleSettings = () => {
-        setDisplaySettings(true);
-        console.log('settings clicked');
-        playClickSound();
-    }
+    setIsRunning(false);
+    currentClockRef.current = id;
+    setClockTime({
+      ...customSettingsRef.current,
+      currentClock: currentClockRef.current,
+    });
+  };
 
-    return (
-        <>
-        <div className="finished-timer-text-wrapper">
-        {(isFinished && rest) && 
-        <span className="finished-timer-text">The timer has finished!<br/><strong>It's time for your break.</strong></span>
-        }
-        {(isFinished && !rest) && 
-        <span className="finished-timer-text">The timer has finished!<br/><strong>It's time to get busy.</strong></span>
-        }
-        </div>
-        <h2 className="time">{timerMinutes}:{timerSeconds}</h2>
-
-        
-
-        <div className="main-button-wrapper">
-
-        <div className="button-wrapper">
-
-        {/* <div className="volume-control">
-            <input type="range" min="0" max="1" step="0.1" />
-        </div> */}
-                <div className="start-reset-wrapper">
-                    <button onClick={isRunning ? handlePause : handleStart} type="button" className={isRunning ? "pause-button start-pause" : "start-button start-pause" }>{isRunning ? "Pause" : "Start"}<br/>{rest ? "BREAK" : "PRODUCTIVITY"}</button>
-                    <button onClick={handleReset} type="button" className="reset-button">Reset</button>
-                </div>
-                <button onClick={handleSettings} disabled={isRunning ? true : false} type="button" className="settings-button">Settings</button>
-            </div>  
-        </div>
-          {/* {isRunning ? <div>running</div> : <div>not running</div>}
-          {isFinished ? <div>finished</div> : <div>not finished</div>}
-          {rest ? <div>break</div> : <div>productivity</div>} */}
-        </>
-    )
+  return (
+    <div className="clock-container">
+      <div className="clock-switch">
+        <button
+          id="work-switch"
+          onClick={(e) => handleClockSwitch(e)}
+          type="button"
+        >
+          Work
+        </button>
+        <button
+          id="break-switch"
+          onClick={(e) => handleClockSwitch(e)}
+          type="button"
+        >
+          Break
+        </button>
+      </div>
+      <h4>It's currently {currentClockRef.current} time</h4>
+      <ClockDisplay clockTime={clockTime} currentClockRef={currentClockRef} />
+      <div className="notice"></div>
+      <ClockControls
+        isRunning={isRunning}
+        setIsRunning={setIsRunning}
+        setClockTime={setClockTime}
+        customSettingsRef={customSettingsRef}
+        currentClockRef={currentClockRef}
+        viewSettings={viewSettings}
+        setViewSettings={setViewSettings}
+      />
+      {clockSettings}
+    </div>
+  );
 }
-
-export default Clock
