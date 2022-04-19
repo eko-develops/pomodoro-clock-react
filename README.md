@@ -6,7 +6,7 @@ This project was completed as a learning experience and as a group exercise. It 
 
 ## Example
 
-<img src="example-images/mobile-ss.png" width="300px">
+<img src="example-images/pomodoro-ss.jpg" width="300px">
 
 ## Features
 
@@ -14,7 +14,7 @@ This project was completed as a learning experience and as a group exercise. It 
 
 1. User can see a timer for 25 minutes - the working session
 
-   The initial working timer is set to 5 seconds and the initial break timer is set to 3 seconds. This is to allow testing of switching between timers when they end and the audio sounds when clicking as well as the timer ending. Once the user sets custom times in the settings panel, then the timer will change accordingly.
+   The initial working timer is set to 3 seconds and the initial break timer is set to 5 seconds. This is to allow testing of switching between timers when they end. Once the user sets custom times in the settings panel, then the timer will change accordingly.
 
 2. After the working session is over, the User can see a timer for 5 minutes - the break session
 
